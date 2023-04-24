@@ -94,7 +94,7 @@ export class IndexenseignantComponent {
       })
 
   }
-  nbrAbsences(etudiant:any):any{
+  /*nbrAbsences(etudiant:any):any{
     
     this.absenceService.nbrAbsencesEtudMat(etudiant.id,this.currentUser.matiere.id).subscribe(
       (response:any) => {
@@ -105,18 +105,19 @@ export class IndexenseignantComponent {
         console.error(error);
         return error;
       }
-    );
-  }
+    );*/
+ 
           
 
   logout(){
     this.authentifService.logout();
 
   }
+}
   
 
 
-}
+
 
 
   
