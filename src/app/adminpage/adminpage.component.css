@@ -1,9 +1,32 @@
+h2 {
+    font-size: 50px;
+    color: blue;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}
 
-@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css');
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
-@import "~@ng-select/ng-select/themes/default.theme.css";
-
-body{
+.navbar-dark{
+    background-color: blueviolet;
+}
+.groupName{
+    font-size: 40px;
+}
+.form-select-student{
+    width: 200px;
+   margin:0 auto;
+   display: block;
+}
+.table {
+    font-size: 14px;
+    padding: 0;
+    border-collapse: collapse;
+	width: 60%;
+	margin: 0 auto;
+	margin-bottom: 40px;
+	
+  }
+  body{
    
     background: #f5f5f5;
 }
@@ -16,7 +39,7 @@ body{
     
 }
 .w-60 {
-    width: 100px;
+    width: 120px;
 }
 h1, h2, h3, h4, h5, h6 {
     margin: 0 0 10px;
