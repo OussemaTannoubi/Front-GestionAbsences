@@ -13,4 +13,5 @@ export class Etudiant {
     password! : String ;
     imageUrl ! : String ;
     groupe! : Groupe;
+    nbrabs?:number;
 }

@@ -65,7 +65,7 @@
 					<th scope="col">Prenom</th>
 					<th scope="col">email</th>
 					<th scope="col">Groupe</th>
-					<!--<th scope="col">Nbr Absences</th>-->
+					<th scope="col">Nbr Absences</th>
 					<th scope="col">Absences</th>
 
 				</tr>
@@ -77,9 +77,13 @@
 					<td>{{etudiant.prenom}}</td>
 					<td>{{etudiant.email}}</td>
 					<td>{{etudiant.groupe.nom_grp}}</td>
-					<!--<td ><div style="color: red;" *ngIf="nbrAbsences(etudiant)>=6" > {{nbrAbsences(etudiant)}} </div>
-						<div *ngIf="nbrAbsences(etudiant)<6">{{nbrAbsences(etudiant)}}</div>
+					<td>{{etudiant.nbrabs}}</td>
+					
+					
+					<!--<td ><div style="color: red;" *ngIf="nbrAbsences() >=6" > {{nbrAbsences()}} </div>
+						<div  *ngIf="nbrAbsences() <6">{{nbrAbsences()}}</div>
 					</td>-->
+					
 					<td> <button type="button" (click)="onOpenAbsenceModal(etudiant.id,'add')" class="btn btn-info">
 							<i class="fas fa-plus"></i> Ajouter
 						</button></td>

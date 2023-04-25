@@ -8,6 +8,7 @@ import { Absence } from '../entities/absence';
 import { NgForm } from '@angular/forms';
 import { AbsenceService } from '../services/absence.service';
 import { AuthentificationService } from '../services/authentification.service';
+import { Observable, catchError, map, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-indexenseignant',
@@ -17,10 +18,12 @@ import { AuthentificationService } from '../services/authentification.service';
 export class IndexenseignantComponent {
   constructor(private enseignantService : EnseignantService , private groupeService:GroupeService ,private absenceService:AbsenceService,private authentifService:AuthentificationService){};
   absence : Absence = new Absence();
-  
+  nbrabs : number = 0;
+  etudiantsList:Etudiant[]=[];
   onFilterStudents(groupe : String ){
     
     this.filtredetudiants=this.listOfStudents.filter((etudiant)=>etudiant.groupe.nom_grp==groupe);
+    this.nbretudiantabs();
   }
   currentUser : any ; 
     selectedgroupe : String = "";
@@ -31,6 +34,8 @@ export class IndexenseignantComponent {
     this.getEnseignant();
     this.getListOfStudents()
     this.getProfGroups();
+    console.log(this.currentUser.matiere.libelle);
+    
     
     
   }
@@ -77,7 +82,7 @@ export class IndexenseignantComponent {
     }
     container?.appendChild(button);
     button.click();
-    console.log(studenId);
+    
   }
   
   date_abs : String = "";
@@ -94,6 +99,7 @@ export class IndexenseignantComponent {
       })
 
   }
+
   /*nbrAbsences(etudiant:any):any{
     
     this.absenceService.nbrAbsencesEtudMat(etudiant.id,this.currentUser.matiere.id).subscribe(
@@ -105,16 +111,45 @@ export class IndexenseignantComponent {
         console.error(error);
         return error;
       }
-    );*/
- 
+    );
+  }*/
+
+  nbrabsences(etudiantId:number):void{
+   
+    console.log(etudiantId);
+     this.absenceService.nbrAbsencesEtudMat(etudiantId,this.currentUser.matiere.id).subscribe((data:number)=>{
+      
+     
+      this.nbrabs = data;
+      console.log(data);
+      
+     });
+    
+   
+
+  }
+  
+  nbretudiantabs(){
+   console.log(this.nbrabs);
+    this.filtredetudiants= this.filtredetudiants.map(e=>{
+      this.absenceService.nbrAbsencesEtudMat(e.id,this.currentUser.matiere.id).subscribe((data:any)=>{
+        e.nbrabs=data;
+        console.log(e);
+        
+      })
+      
+      return e;
+    })
+  }
           
 
   logout(){
     this.authentifService.logout();
 
   }
+
+
 }
-  
 
 
 

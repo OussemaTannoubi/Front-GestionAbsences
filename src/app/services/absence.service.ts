@@ -19,6 +19,6 @@ export class AbsenceService {
   }
 
   public nbrAbsencesEtudMat(etudiantId:number,matId:number):Observable<any>{
-    return this.http.get<any>(`${this.apiServerUrl}/absencesetud/${etudiantId}/matiere/${matId}`);
+    return this.http.get(`${this.apiServerUrl}/absencesetud/${etudiantId}/matiere/${matId}`);
   }
 }
